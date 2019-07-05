@@ -6,7 +6,7 @@ const request = require("request")
 // Creates express app
 const app = express()
 // The port used for Express server
-const PORT = 80
+const PORT = process.env.PORT ||80
 // Starts server
 app.listen(PORT, () => console.log(`Example app listening on port ${PORT}!`))
 
