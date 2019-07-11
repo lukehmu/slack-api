@@ -18,10 +18,13 @@ app.post('/', (req, res) => {
     let text = req.body.text
     var data = {form: {
     token: process.env.SLACK_AUTH_TOKEN,
-    channel: "#luke-test",
-    text: processText(text)
+    "profile": {
+        "status_text": "riding a train",
+        "status_emoji": ":mountain_railway:",
+        "status_expiration": 0
+    }
     }};
-request.post('https://slack.com/api/chat.postMessage', data, function (error, response, body) {
+request.post('https://slack.com/api/users.profile.set', data, function (error, response, body) {
       // Sends welcome message
       //console.log(error)
       console.log(body)
