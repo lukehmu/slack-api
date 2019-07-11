@@ -37,6 +37,9 @@ app.post('/', (req, res) => {
         auth: {
             'bearer' : process.env.SLACK_AUTH_TOKEN
         },
+        headers: {
+            "Content-type": "application/json; charset=utf-8"
+        },
         formData: data
     },
     function (error, response, body) {
