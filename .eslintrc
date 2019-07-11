@@ -1,0 +1,28 @@
+{
+    "extends": [
+        "prettier"
+    ],
+    "plugins": [
+        "prettier"
+    ],
+    "env": {
+        "es6": true
+    },
+    "globals": {
+        "Framework": true
+    },
+    "rules": {
+        "prettier/prettier": [
+            "error",
+            {
+                "printWidth": 80,
+                "tabWidth": 2,
+                "singleQuote": true
+            }
+        ]
+    },
+    "parserOptions": {
+        "sourceType": "module"
+    }
+}
+
