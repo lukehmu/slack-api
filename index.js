@@ -16,6 +16,7 @@ app.use(bodyParser.json());
 
 app.post('/', (req, res) => {
     let text = req.body.text
+    req.header("Bearer: process.env.SLACK_AUTH_TOKEN")
     let data =
     {
         "profile": {
