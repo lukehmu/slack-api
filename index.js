@@ -16,7 +16,7 @@ app.use(bodyParser.json());
 
 app.post('/', (req, res) => {
     let text = req.body.text
-    req.header("Bearer: xoxp-683738623317-673489444386-673793607251-0a2fbb028b83c25b87c7e0577ef99c87")
+    req.header("Authorization: Bearer xoxp-683738623317-673489444386-673793607251-0a2fbb028b83c25b87c7e0577ef99c87")
     let data =
     {
         "profile": {
