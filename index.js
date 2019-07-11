@@ -26,11 +26,12 @@ app.post('/', (req, res) => {
     }
 }
 request.post('https://slack.com/api/users.profile.set', data, function (error, response, body) {
-      // Sends welcome message
-      //console.log(error)
-      console.log(body)
-      //console.log(body)
-      res.json()
+    res.set("Authorization", "Bearer xoxp-683738623317-673489444386-673793607251-0a2fbb028b83c25b87c7e0577ef99c87")
+    // Sends welcome message
+    //console.log(error)
+    console.log(body)
+    //console.log(body)
+    res.json()
     });
 });
 
