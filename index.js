@@ -23,7 +23,6 @@ app.use(bodyParser.json());
 app.post('/', (req, res) => {
     let text = req.body.text
     let data = {
-        //"token": process.env.SLACK_AUTH_TOKEN,
         "profile": {
             "status_text": "riding a train",
             "status_emoji": ":mountain_railway:",
@@ -38,9 +37,10 @@ app.post('/', (req, res) => {
             'bearer' : process.env.SLACK_AUTH_TOKEN
         },
         headers: {
-            "Content-type": "application/json; charset=utf-8"
+            'Content-type': 'application/json; charset=utf-8'
         },
-        formData: data
+        formData: data,
+        json: true
     },
     function (error, response, body) {
         //res.setHeader('Authorization', 'Bearer '+ process.env.SLACK_AUTH_TOKEN)
