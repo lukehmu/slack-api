@@ -22,18 +22,22 @@ app.use(bodyParser.json());
 
 app.post('/', (req, res) => {
     let text = req.body.text
+    console.log(text)
     let emoji = ''
     switch (text) {
         case 'sun':
             emoji = ':sunny:'
-        break;
+            break;
         case 'rain':
             emoji = ':rain_cloud:'
-        break;
+            break;
         default:
             emoji = ':mountain_railway:'
 
     }
+
+    console.log(emoji)
+
     let data = {
         profile: JSON.stringify({
             status_text: 'riding a train',
@@ -41,27 +45,27 @@ app.post('/', (req, res) => {
             status_expiration: 0
         })
     }
-    console.log(text)
+    console.log(emoji)
 
     request.post({
-        url: 'https://slack.com/api/users.profile.set',
-        auth: {
-            'bearer' : process.env.SLACK_AUTH_TOKEN
+            url: 'https://slack.com/api/users.profile.set',
+            auth: {
+                'bearer': process.env.SLACK_AUTH_TOKEN
+            },
+            headers: {
+                'Content-type': 'application/json; charset=utf-8'
+            },
+            formData: data,
+            json: true
         },
-        headers: {
-            'Content-type': 'application/json; charset=utf-8'
-        },
-        formData: data,
-        json: true
-    },
-    function (error, response, body) {
-        //res.setHeader('Authorization', 'Bearer '+ process.env.SLACK_AUTH_TOKEN)
-        // Sends welcome message
-        //console.log(error)
-        console.log(body)
-        //console.log(body)
-        res.json()
-    });
+        function (error, response, body) {
+            //res.setHeader('Authorization', 'Bearer '+ process.env.SLACK_AUTH_TOKEN)
+            // Sends welcome message
+            //console.log(error)
+            console.log(body)
+            //console.log(body)
+            res.json()
+        });
 });
 
 // app.post('/', (req, res) => {
