@@ -13,7 +13,7 @@ app.listen(PORT, () => console.log(`Example app listening on port ${PORT}!`))
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
-res.setHeader('Authorization', 'Bearer '+ process.env.SLACK_AUTH_TOKEN)
+//res.setHeader('Authorization', 'Bearer '+ process.env.SLACK_AUTH_TOKEN)
 
 //let headers = "Authorization : Bearer xoxp-683738623317-673489444386-673793607251-0a2fbb028b83c25b87c7e0577ef99c87"
 
