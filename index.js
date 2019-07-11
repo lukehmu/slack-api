@@ -23,7 +23,7 @@ app.use(bodyParser.json());
 app.post('/', (req, res) => {
     let text = req.body.text
     let data = {
-        "token": process.env.SLACK_AUTH_TOKEN,
+        //"token": process.env.SLACK_AUTH_TOKEN,
         "profile": {
             "status_text": "riding a train",
             "status_emoji": ":mountain_railway:",
@@ -32,7 +32,14 @@ app.post('/', (req, res) => {
     }
     console.log(text)
 
-    request.post('https://slack.com/api/users.profile.set', data, function (error, response, body) {
+    request.post({
+        url: 'https://slack.com/api/users.profile.set',
+        auth: {
+            'bearer' : process.env.SLACK_AUTH_TOKEN
+        },
+        formData: data
+    },
+    function (error, response, body) {
         //res.setHeader('Authorization', 'Bearer '+ process.env.SLACK_AUTH_TOKEN)
         // Sends welcome message
         //console.log(error)
