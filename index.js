@@ -6,11 +6,13 @@ const request = require("request")
 // Creates express app
 const app = express()
 // The port used for Express server
-const PORT = process.env.PORT ||80
+const PORT = process.env.PORT || 80
 // Starts server
 app.listen(PORT, () => console.log(`Example app listening on port ${PORT}!`))
 
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
 app.use(bodyParser.json());
 
 //res.setHeader('Authorization', 'Bearer '+ process.env.SLACK_AUTH_TOKEN)
@@ -19,23 +21,23 @@ app.use(bodyParser.json());
 
 
 app.post('/', (req, res) => {
-    res.setHeader('Authorization', 'Bearer '+ process.env.SLACK_AUTH_TOKEN)
+    //res.setHeader('Authorization', 'Bearer '+ process.env.SLACK_AUTH_TOKEN)
     let text = req.body.text
-    let data =
-    {
+    let data = {
+        "token": process.env.SLACK_AUTH_TOKEN,
         "profile": {
-        "status_text": "riding a train",
-        "status_emoji": ":mountain_railway:",
-        "status_expiration": 0
+            "status_text": "riding a train",
+            "status_emoji": ":mountain_railway:",
+            "status_expiration": 0
+        }
     }
-}
-request.post('https://slack.com/api/users.profile.set', data, function (error, response, body) {
-    res.setHeader('Authorization', 'Bearer '+ process.env.SLACK_AUTH_TOKEN)
-    // Sends welcome message
-    //console.log(error)
-    console.log(body)
-    //console.log(body)
-    res.json()
+    request.post('https://slack.com/api/users.profile.set', data, function (error, response, body) {
+        //res.setHeader('Authorization', 'Bearer '+ process.env.SLACK_AUTH_TOKEN)
+        // Sends welcome message
+        //console.log(error)
+        console.log(body)
+        //console.log(body)
+        res.json()
     });
 });
 
@@ -56,5 +58,5 @@ request.post('https://slack.com/api/users.profile.set', data, function (error, r
 // });
 
 function processText(text) {
-    return(text)
+    return text
 }
