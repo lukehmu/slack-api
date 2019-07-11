@@ -21,7 +21,6 @@ app.use(bodyParser.json());
 
 
 app.post('/', (req, res) => {
-    //res.setHeader('Authorization', 'Bearer '+ process.env.SLACK_AUTH_TOKEN)
     let text = req.body.text
     let data = {
         "token": process.env.SLACK_AUTH_TOKEN,
@@ -31,6 +30,8 @@ app.post('/', (req, res) => {
             "status_expiration": 0
         }
     }
+    console.log(text)
+
     request.post('https://slack.com/api/users.profile.set', data, function (error, response, body) {
         //res.setHeader('Authorization', 'Bearer '+ process.env.SLACK_AUTH_TOKEN)
         // Sends welcome message
