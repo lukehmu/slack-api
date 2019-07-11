@@ -13,10 +13,14 @@ app.listen(PORT, () => console.log(`Example app listening on port ${PORT}!`))
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
+res.setHeader('Authorization', 'Bearer '+ process.env.SLACK_AUTH_TOKEN)
+
+//let headers = "Authorization : Bearer xoxp-683738623317-673489444386-673793607251-0a2fbb028b83c25b87c7e0577ef99c87"
+
 
 app.post('/', (req, res) => {
+    res.setHeader('Authorization', 'Bearer '+ process.env.SLACK_AUTH_TOKEN)
     let text = req.body.text
-    let headers = "Authorization : Bearer xoxp-683738623317-673489444386-673793607251-0a2fbb028b83c25b87c7e0577ef99c87"
     let data =
     {
         "profile": {
@@ -25,8 +29,8 @@ app.post('/', (req, res) => {
         "status_expiration": 0
     }
 }
-request.post({url: 'https://slack.com/api/users.profile.set'}, data, function (error, response, body) {
-    res.set("Authorization", "Bearer xoxp-683738623317-673489444386-673793607251-0a2fbb028b83c25b87c7e0577ef99c87")
+request.post('https://slack.com/api/users.profile.set', data, function (error, response, body) {
+    res.setHeader('Authorization', 'Bearer '+ process.env.SLACK_AUTH_TOKEN)
     // Sends welcome message
     //console.log(error)
     console.log(body)
