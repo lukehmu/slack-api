@@ -22,10 +22,22 @@ app.use(bodyParser.json());
 
 app.post('/', (req, res) => {
     let text = req.body.text
+    let emoji = ''
+    switch (text) {
+        case 'sun':
+            emoji = ':sunny:'
+        break;
+        case 'rain':
+            emoji = ':rain_cloud:'
+        break;
+        default:
+            emoji = ':mountain_railway:'
+
+    }
     let data = {
         profile: JSON.stringify({
             status_text: 'riding a train',
-            status_emoji: ':mountain_railway:',
+            status_emoji: emoji,
             status_expiration: 0
         })
     }
