@@ -23,11 +23,11 @@ app.use(bodyParser.json());
 app.post('/', (req, res) => {
     let text = req.body.text
     let data = {
-        profile: {
-            status_text: "riding a train",
-            status_emoji: ":mountain_railway:",
+        profile: JSON.stringify({
+            status_text: 'riding a train',
+            status_emoji: ':mountain_railway:',
             status_expiration: 0
-        }
+        })
     }
     console.log(text)
 
