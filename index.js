@@ -15,11 +15,6 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(bodyParser.json());
 
-//res.setHeader('Authorization', 'Bearer '+ process.env.SLACK_AUTH_TOKEN)
-
-//let headers = "Authorization : Bearer xoxp-683738623317-673489444386-673793607251-0a2fbb028b83c25b87c7e0577ef99c87"
-
-
 app.post('/', (req, res) => {
     let text = req.body.text
     console.log(text)
@@ -59,11 +54,7 @@ app.post('/', (req, res) => {
             json: true
         },
         function (error, response, body) {
-            //res.setHeader('Authorization', 'Bearer '+ process.env.SLACK_AUTH_TOKEN)
-            // Sends welcome message
-            //console.log(error)
             console.log(body)
-            //console.log(body)
             res.json()
         });
 });
