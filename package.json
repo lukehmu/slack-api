@@ -16,7 +16,9 @@
     "request": "^2.88.0"
   },
   "devDependencies": {
-    "eslint": "^6.0.1",
+    "eslint": "^5.3.0",
+    "eslint-config-airbnb-base": "^13.2.0",
+    "eslint-plugin-import": "^2.17.2",
     "standard": "^13.0.2",
     "stylelint": "^9.4.0"
   }
